@@ -1,0 +1,58 @@
+plugins {
+	id 'groovy-gradle-plugin'
+	id 'version-catalog'
+	id "org.asciidoctor.jvm.convert" version "4.0.2"
+	id "org.asciidoctor.jvm.gems" version "4.0.2"
+	id "io.freefair.aggregate-javadoc" version "6.6.3"
+	id "de.epitschke.gradle-file-versioning" version "1.3.0"
+}
+
+ext {
+	projectVersion = "${de.epitschke.gradle.fileversioning.FileVersioningPlugin.getVersionFromFile()}"
+}
+
+aggregateJavadoc {
+	failOnError = false
+	destinationDir = file("${project.docsDir}/assets/javadoc")
+}
+
+asciidoctor {
+
+	sourceDir file('asciidoc')
+	baseDir file('asciidoc')
+	outputDir file('build/docs')
+
+	resources {
+		from('asciidoc/assets/images') {
+			include '**/*.*'
+		}
+		into './assets/images'
+	}
+
+	attributes   \
+		  'version': project.version,
+			'name': project.name,
+			'date': LocalDate.now() as String,
+			'javadocPrefix': 'javadoc',
+			'typedocPrefix': 'typedoc',
+			'indexPage': 'index.html'
+}
+
+
+task generateDocumentation {
+	dependsOn 'asciidoctor', 'aggregateJavadoc'
+	doLast {
+		println "Generating Asciidoc and Javadoc"
+	}
+}
+
+catalog {
+	versionCatalog {
+		library('utils-rest-server-connector-spring-boot-autoconfigure', 'com.mgmtp.a12.utils', 'utils-rest-server-connector-spring-boot-autoconfigure').version("${project.projectVersion}")
+		library('utils-rest-server-connector', 'com.mgmtp.a12.utils', 'utils-rest-server-connector').version("${project.projectVersion}")
+		library('utils-server-connector-api', 'com.mgmtp.a12.utils', 'utils-server-connector-api').version("${project.projectVersion}")
+
+		bundle("utilsServerConnectorBundle", ["utils-server-connector-api", "utils-rest-server-connector", "utils-rest-server-connector-spring-boot-autoconfigure"])
+	}
+}
+

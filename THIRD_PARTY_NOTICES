@@ -1,0 +1,677 @@
+THIRD_PARTY_NOTICES
+
+Component: A12 Utils Server-Connector
+Generated: 2026-03-10 for mgm A12 Platform 2025.06-ext3
+
+The mgm A12 Platform is developed by mgm technology partners GmbH.
+
+https://www.mgm-tp.com.
+
+This file lists third-party software components included in this
+distribution of the mgm A12 Platform and the licenses that apply
+to them.
+
+Component Overview
+-------------------
+
+The following third-party components are included in this distribution:
+
+
+- abab 2.0.6, licensed under BSD-3-Clause
+	Copyright © 2019 W3C and Jeff Carpenter <jeffcarp@chromium.org>
+	Source: https://github.com/jsdom/abab/tree/2.0.6
+- abbrev 3.0.1, licensed under MIT
+	Copyright Isaac Z. Schlueter and Contributors
+	Source: https://github.com/npm/abbrev-js
+- acorn-globals 6.0.0, licensed under MIT
+	Copyright (c) 2014 Forbes Lindesay
+	Source: https://github.com/ForbesLindesay/acorn-globals
+- acorn-walk 7.2.0, licensed under MIT
+	Copyright (C) 2012-2020 by various contributors (see AUTHORS)
+	Source: https://github.com/acornjs/acorn/tree/master/acorn-walk
+- agent-base 6.0.2, licensed under MIT
+	Copyright (c) 2013 Nathan Rajlich <nathan@tootallnate.net>
+	Source: https://github.com/TooTallNate/proxy-agents
+- asynckit 0.4.0, licensed under MIT
+	Copyright (c) 2016 Alex Indigo
+	Source: https://github.com/alexindigo/asynckit
+- @babel/core 7.11.1, licensed under MIT
+	Copyright (c) 2014-present Sebastian McKenzie and other contributors
+	Source: https://github.com/babel/babel
+- @babel/register 7.10.5, licensed under MIT
+	Copyright (c) 2014-present Sebastian McKenzie and other contributors
+	Source: https://github.com/babel/babel
+- base64-js 1.5.1, licensed under MIT
+	Copyright (c) 2014 Jameson Little
+	Source: https://github.com/beatgammit/base64-js
+- bindings 1.5.0, licensed under MIT
+	Copyright (c) 2012 Nathan Rajlich <nathan@tootallnate.net>
+	Source: https://github.com/TooTallNate/node-bindings
+- bl 4.1.0, licensed under MIT
+	Copyright (c) 2013-2019 bl contributors
+	Source: https://github.com/rvagg/bl
+- browser-process-hrtime 1.0.0, licensed under BSD-2-Clause
+	Copyright 2014 kumavis
+	Source: https://github.com/kumavis/browser-process-hrtime
+- buffer 5.7.1, licensed under MIT
+	Copyright (c) Feross Aboukhadijeh, and other contributors
+	Source: https://github.com/feross/buffer
+- cacache 19.0.1, licensed under ISC
+	Copyright (c) npm, Inc.
+	Source: https://github.com/npm/cacache
+- call-bind-apply-helpers 1.0.2, licensed under MIT
+	Copyright (c) 2024 Jordan Harband
+	Source: https://github.com/ljharb/call-bind-apply-helpers
+- chownr 3.0.0, licensed under BlueOak-1.0.0
+	Source: https://github.com/isaacs/chownr
+- combined-stream 1.0.8, licensed under MIT
+	Copyright (c) 2011 Debuggable Limited <felix@debuggable.com>
+	Source: https://github.com/felixge/node-combined-stream
+- @com.mgmtp.a12.devtools/codemod 0.1.0-pre.4, licensed under EUPL v1.2
+	Copyright (C) 2012-2026 mgm technology partners GmbH
+	Source: https://github.com/mgm-tp
+- @com.mgmtp.a12.devtools/devtools 10.1.0, licensed under EUPL v1.2
+	Copyright (C) 2012-2026 mgm technology partners GmbH
+	Source: https://github.com/mgm-tp
+- @com.mgmtp.a12.devtools/devtools 10.1.1, licensed under EUPL v1.2
+	Copyright (C) 2012-2026 mgm technology partners GmbH
+	Source: https://github.com/mgm-tp
+- @com.mgmtp.a12.devtools/eslint-config 2.0.0, licensed under EUPL v1.2
+	Copyright (C) 2012-2026 mgm technology partners GmbH
+	Source: https://github.com/mgm-tp
+- @com.mgmtp.a12.devtools/prettier-config 1.0.0, licensed under EUPL v1.2
+	Copyright (C) 2012-2026 mgm technology partners GmbH
+	Source: https://github.com/mgm-tp
+- clipboard.js v2.0.11, licensed under MIT
+	Licensed MIT © Zeno Rocha
+	https://clipboardjs.com/
+- cross-env 7.0.2, licensed under MIT
+	Copyright (c) 2017 Kent C. Dodds
+	Source: https://github.com/kentcdodds/cross-env
+- cssom 0.4.4, licensed under MIT
+	Copyright (c) Nikita Vasilyev
+	Source: https://github.com/NV/CSSOM
+- cssstyle 2.3.0, licensed under MIT
+	Copyright (c) Chad Walker
+	Source: https://github.com/jsdom/cssstyle
+- @cyclonedx/cyclonedx-npm 4.1.2, licensed under Apache-2.0
+	Copyright (c) OWASP Foundation
+	Source: https://github.com/CycloneDX
+- data-urls 2.0.0, licensed under MIT
+	Copyright © Domenic Denicola <d@domenic.me>
+	Source: https://github.com/jsdom/data-urls
+- decimal.js 10.6.0, licensed under MIT
+	Copyright (c) 2025 Michael Mclaughlin
+	Source: https://github.com/MikeMcl/decimal.js
+- decompress-response 6.0.0, licensed under MIT
+	Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+	Source: https://github.com/sindresorhus/decompress-response
+- deep-extend 0.6.0, licensed under MIT
+	Copyright (c) 2013-2018, Viacheslav Lotsmanov
+	Source: https://github.com/unclechu/node-deep-extend
+- delayed-stream 1.0.0, licensed under MIT
+	Copyright (c) 2011 Debuggable Limited <felix@debuggable.com>
+	Source: https://github.com/felixge/node-delayed-stream
+- detect-libc 2.1.2, licensed under Apache-2.0
+	Copyright 2017 Lovell Fuller and others
+	Source: https://github.com/lovell/detect-libc
+- discontinuous-range 1.0.0, licensed under MIT
+	Copyright (c) 2014 David Tudury
+	Source: https://github.com/dtudury/discontinuous-range
+- domexception 2.0.1, licensed under MIT
+	Copyright © 2017 Domenic Denicola
+	Source: https://github.com/jsdom/domexception
+- dunder-proto 1.0.1, licensed under MIT
+	Copyright (c) 2024 ECMAScript Shims
+	Source: https://github.com/es-shims/dunder-proto
+- encoding 0.1.13, licensed under MIT
+	Copyright (c) 2012-2014 Andris Reinman
+	Source: https://github.com/andris9/encoding
+- end-of-stream 1.4.5, licensed under MIT
+	Copyright (c) 2014 Mathias Buus
+	Source: https://github.com/mafintosh/end-of-stream
+- env-paths 2.2.1, licensed under MIT
+	Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+	Source: https://github.com/sindresorhus/env-paths
+- err-code 2.0.3, licensed under MIT
+	Source: https://github.com/IndigoUnited/js-err-code
+- escodegen 2.1.0, licensed under BSD-2-Clause
+	Copyright (C) 2012 Yusuke Suzuki (twitter: @Constellation) and other contributors
+	Source: https://github.com/estools/escodegen
+- es-define-property 1.0.1, licensed under MIT
+	Copyright (c) 2024 Jordan Harband
+	Source: https://github.com/ljharb/es-define-property
+- es-errors 1.3.0, licensed under MIT
+	Copyright (c) 2024 Jordan Harband
+	Source: https://github.com/ljharb/es-errors
+- eslint 9.24.0, licensed under MIT
+	Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
+	Source: https://github.com/eslint/eslint
+- eslint-plugin-notice 1.0.0, licensed under MIT
+	Copyright (c) 2017 Nick Deis
+	Source: https://github.com/nickdeis/eslint-plugin-notice
+- es-object-atoms 1.1.1, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/ljharb/es-object-atoms
+- esprima 4.0.1, licensed under BSD-2-Clause
+	Copyright JS Foundation and other contributors, https://js.foundation/
+	Source: http://esprima.org
+- es-set-tostringtag 2.1.0, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/es-shims/es-set-tostringtag
+- expand-template 2.0.3, licensed under MIT
+	Copyright (c) 2018 Lars-Magnus Skog
+	Source: https://github.com/ralphtheninja/expand-template
+- exponential-backoff 3.1.3, licensed under Apache-2.0
+	Source: https://github.com/coveooss/exponential-backoff
+- extend 3.0.2, licensed under MIT
+	Copyright (c) 2014 Stefan Thomas
+	Source: https://github.com/justmoon/node-extend
+- faker 4.1.0, licensed under MIT
+	Copyright (c) 2010-2015 Matthew Bergman & Marak Squires
+	Source: https://github.com/Marak/Faker.js
+- fast-uri 3.1.0, licensed under BSD-3-Clause
+	Copyright (c) 2011-2021, Gary Court and Copyright (c) 2021-present The Fastify team <https://github.com/fastify/fastify#team>
+	Source: https://github.com/fastify/fast-uri
+- fetch-mock 9.10.7, licensed under MIT
+	Copyright (c) 2015 Rhys Evans
+	Source: https://github.com/wheresrhys/fetch-mock
+- file-uri-to-path 1.0.0, licensed under MIT
+	Copyright (c) 2014 Nathan Rajlich <nathan@tootallnate.net>
+	Source: https://github.com/TooTallNate/file-uri-to-path
+- form-data 3.0.4, licensed under MIT
+	Copyright (c) 2012 Felix Geisendörfer (felix@debuggable.com) and contributors
+	Source: https://github.com/form-data/form-data
+- fs-constants 1.0.0, licensed under MIT
+	Copyright (c) 2018 Mathias Buus
+	Source: https://github.com/mafintosh/fs-constants
+- fs-minipass 3.0.3, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/npm/fs-minipass
+- function-bind 1.1.2, licensed under MIT
+	Copyright (c) 2013 Raynos.
+	Source: https://github.com/Raynos/function-bind
+- get-intrinsic 1.3.0, licensed under MIT
+	Copyright (c) 2020 Jordan Harband
+	Source: https://github.com/ljharb/get-intrinsic
+- get-proto 1.0.1, licensed under MIT
+	Copyright (c) 2025 Jordan Harband
+	Source: https://github.com/ljharb/get-proto
+- github-from-package 0.0.0, licensed under MIT
+	Source: https://github.com/substack/github-from-package
+- gopd 1.2.0, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/ljharb/gopd
+- graceful-fs 4.2.11, licensed under ISC
+	Copyright isaacs
+	Source: https://github.com/isaacs/node-graceful-fs
+- hasown 2.0.2, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/inspect-js/hasOwn
+- has-symbols 1.1.0, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/inspect-js/has-symbols
+- has-tostringtag 1.0.2, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/inspect-js/has-tostringtag
+- html-encoding-sniffer 2.0.1, licensed under MIT
+	Copyright Domenic Denicola
+	Source: https://github.com/jsdom/html-encoding-sniffer
+- http-cache-semantics 4.2.0, licensed under BSD-2-Clause
+	Copyright 2016-2018 Kornel Lesiński
+	Source: https://github.com/kornelski/http-cache-semantics
+- http-proxy-agent 4.0.1, licensed under MIT
+	Copyright Nathan Rajlich
+	Source: https://github.com/TooTallNate/node-http-proxy-agent
+- https-proxy-agent 5.0.1, licensed under MIT
+	Copyright Nathan Rajlich
+	Source: https://github.com/TooTallNate/node-https-proxy-agent
+- iconv-lite 0.6.3, licensed under MIT
+	Copyright Alexander Shtuchkin
+	Source: https://github.com/ashtuchkin/iconv-lite
+- ieee754 1.2.1, licensed under BSD-3-Clause
+	Copyright 2008 Fair Oaks Labs, Inc.
+	Source: https://github.com/feross/ieee754
+- inherits 2.0.4, licensed under ISC
+	Copyright isaacs
+	Source: https://github.com/isaacs/inherits
+- ini 1.3.8, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/ini
+- ip-address 10.1.0, licensed under MIT
+	Copyright (C) 2011 by Beau Gunderson
+	Source: https://github.com/beaugunderson/ip-address
+- @isaacs/fs-minipass 4.0.1, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/fs-minipass
+- isomorphic-fetch 2.2.1, licensed under MIT
+	Copyright (c) 2015 Matt Andrews
+	Source: https://github.com/matthew-andrews/isomorphic-fetch
+- is-potential-custom-element-name 1.0.1, licensed under MIT
+	Copyright Mathias Bynens
+	Source: https://github.com/mathiasbynens/is-potential-custom-element-name
+- jsdom-global 3.0.2, licensed under MIT
+	(c) 2016+, Rico Sta. Cruz
+	Source: https://github.com/rstacruz/jsdom-global
+- lodash 4.17.21, licensed under MIT
+	Copyright OpenJS Foundation and other contributors <https://openjsf.org/> and copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
+	Source: https://github.com/lodash/lodash
+- lru-cache 10.4.3, licensed under ISC
+	Copyright (c) 2010-2023 Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/node-lru-cache
+- make-fetch-happen 14.0.3, licensed under ISC
+	Copyright 2017-2022 (c) npm, Inc.
+	Source: https://github.com/npm/make-fetch-happen
+- math-intrinsics 1.1.0, licensed under MIT
+	Copyright Jordan Harband
+	Source: https://github.com/es-shims/math-intrinsics
+- @microsoft/api-extractor 7.55.2, licensed under MIT
+	Copyright (c) Microsoft Corporation
+	Source: https://github.com/microsoft/rushstack/tree/main/apps/api-extractor
+- milsymbol 2.0.0, licensed under MIT
+	Copyright (c) 2017 Måns Beckman - www.spatialillusions.com
+	Source: https://github.com/spatialillusions/milsymbol
+- mime-db 1.52.0, licensed under MIT
+	Copyright Douglas Christopher Wilson
+	Source: https://github.com/jshttp/mime-db
+- mime-types 2.1.35, licensed under MIT
+	Copyright Douglas Christopher Wilson
+	Source: https://github.com/jshttp/mime-types
+- mimic-response 3.1.0, licensed under MIT
+	Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+	Source: https://github.com/sindresorhus/mimic-response
+- minimist 1.2.8, licensed under MIT
+	James Halliday (mail@substack.net) - no explicit copyright line in LICENSE file
+	Source: https://github.com/minimistjs/minimist
+- minipass-collect 2.0.1, licensed under ISC
+	Copyright (c) 2019-2023 Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/minipass-collect
+- minipass-fetch 4.0.1, licensed under MIT
+	Copyright (c) Isaac Z. Schlueter and Contributors AND Copyright (c) 2016 David Frank
+	Source: https://github.com/npm/minipass-fetch
+- minipass-flush 1.0.5, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/minipass-flush
+- minipass-pipeline 1.2.4, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/minipass-pipeline/commit/ead0263f019a9ec1eeb6db5da34c62479bb0a967
+- minipass-sized 1.0.3, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/minipass-sized
+- minizlib 3.1.0, licensed under MIT
+	Copyright (c) 2017-2023 Isaac Z. Schlueter and Contributors AND Copyright (c) 2017-2023 Node.js contributors AND Copyright (c) 2017-2023 Joyent, Inc. and other Node contributors
+	Source: https://github.com/isaacs/minizlib
+- mkdirp-classic 0.5.3, licensed under MIT
+	Copyright (c) 2020 James Halliday (mail@substack.net) and Mathias Buus
+	Source: https://github.com/mafintosh/mkdirp-classic
+- mocha 11.2.2, licensed under MIT
+	Copyright (c) 2011-2024 OpenJS Foundation and contributors, https://openjsf.org
+	Source: https://github.com/mochajs/mocha
+- mock-local-storage 1.1.23, licensed under MIT
+	Copyright (c) 2021-2022 Kai Giokas and Copyright (c) 2015-2021 letsrock-today
+	Source: https://gitlab.com/kaictl/node/mock-local-storage
+- moo 0.5.2, licensed under BSD-3-Clause
+	Copyright (c) 2017, Tim Radvan (tjvr)
+	Source: https://github.com/tjvr/moo
+- nan 2.22.2, licensed under MIT
+	Copyright (c) 2018 [NAN contributors](<https://github.com/nodejs/nan#wg-members--collaborators>) 
+	Source: https://github.com/nodejs/nan
+- napi-build-utils 2.0.0, licensed under MIT
+	Copyright (c) 2018 inspiredware
+	Source: https://github.com/inspiredware/napi-build-utils
+- nearley 2.20.1, licensed under MIT
+	Copyright (c) 2014, 2015, 2016, 2017, 2018, 2019 Kartik Chandra, Tim Radvan
+	Source: https://github.com/kach/nearley
+- negotiator 1.0.0, licensed under MIT
+	Copyright (c) 2012-2014 Federico Romero and Copyright (c) 2012-2014 Isaac Z. Schlueter and Copyright (c) 2014-2015 Douglas Christopher Wilson
+	Source: https://github.com/jshttp/negotiator
+- node-abi 3.85.0, licensed under MIT
+	Copyright (c) 2016 Lukas Geiger
+	Source: https://github.com/electron/node-abi
+- node-fetch 2.6.0, licensed under MIT
+	Copyright (c) 2016 David Frank
+	Source: https://github.com/bitinn/node-fetch
+- node-gyp 11.5.0, licensed under MIT
+	Copyright (c) 2012 Nathan Rajlich <nathan@tootallnate.net>
+	Source: https://github.com/nodejs/node-gyp
+- nopt 8.1.0, licensed under ISC
+	Copyright (c) Isaac Z. Schlueter and Contributors
+	Source: https://github.com/npm/nopt
+- @npmcli/agent 3.0.0, licensed under ISC
+	Source: https://github.com/npm/agent
+- @npmcli/fs 4.0.0, licensed under ISC
+	Copyright npm, Inc.
+	Source: https://github.com/npm/fs
+- npm-run-all 4.1.5, licensed under MIT
+	Copyright (c) 2015 Toru Nagashima
+	Source: https://github.com/mysticatea/npm-run-all
+- npm-watch 0.1.9, licensed under MIT
+	Copyright (c) 2013 Stephen Sugden
+	Source: https://github.com/grncdr/npm-watch
+- nwsapi 2.2.23, licensed under MIT
+	Copyright Diego Perini
+	Source: https://github.com/dperini/nwsapi
+- nyc 14.1.1, licensed under ISC
+	Copyright (c) 2015, Contributors
+	Source: https://github.com/istanbuljs/nyc
+- once 1.4.0, licensed under ISC
+	Copyright Isaac Z. Schlueter
+	Source: https://github.com/isaacs/once
+- parse5 6.0.1, licensed under MIT
+	Copyright Ivan Nikulin
+	Source: https://github.com/inikulin/parse5
+- @pkgjs/parseargs 0.11.0, licensed under MIT
+	Copyright (c) 2021 Darcy Clarke and contributors
+	Source: https://github.com/pkgjs/parseargs
+- p-map 7.0.4, licensed under MIT
+	Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+	Source: https://github.com/sindresorhus/p-map
+- prebuild-install 7.1.3, licensed under MIT
+	Copyright (c) 2015 Mathias Buus
+	Source: https://github.com/prebuild/prebuild-install
+- prettier 3.5.3, licensed under MIT
+	Copyright © James Long and contributors
+	Source: https://github.com/prettier/prettier
+- proc-log 5.0.0, licensed under ISC
+	Copyright (c) GitHub, Inc.
+	Source: https://github.com/npm/proc-log
+- promise-retry 2.0.1, licensed under MIT
+	Copyright (c) 2014 IndigoUnited
+	Source: https://github.com/IndigoUnited/node-promise-retry
+- psl 1.15.0, licensed under MIT
+	Copyright Lupo Montero
+	Source: https://github.com/lupomontero/psl
+- pump 3.0.3, licensed under MIT
+	Copyright (c) 2014 Mathias Buus
+	Source: https://github.com/mafintosh/pump
+- querystringify 2.2.0, licensed under MIT
+	Copyright Arnout Kazemier
+	Source: https://github.com/unshiftio/querystringify
+- railroad-diagrams 1.0.0, licensed under MIT
+	Copyright (c) 2021 Tab Atkins Jr.
+	Source: https://github.com/tabatkins/railroad-diagrams
+- randexp 0.4.6, licensed under MIT
+	Copyright (C) 2011 by Roly Fentanes
+	Source: https://github.com/fent/randexp.js
+- rc 1.2.8, licensed under MIT
+	Copyright (c) 2011 Dominic Tarr
+	Source: https://github.com/dominictarr/rc
+- readable-stream 3.6.2, licensed under MIT
+	Copyright Node.js contributors
+	Source: https://github.com/nodejs/readable-stream
+- require-from-string 2.0.2, licensed under MIT
+	Copyright Vsevolod Strukchinsky
+	Source: https://github.com/floatdrop/require-from-string
+- requires-port 1.0.0, licensed under MIT
+	Copyright Arnout Kazemier
+	Source: https://github.com/unshiftio/requires-port
+- ret 0.1.15, licensed under MIT
+	Copyright (C) 2011 by Roly Fentanes
+	Source: https://github.com/fent/ret.js
+- retry 0.12.0, licensed under MIT
+	Copyright (c) 2011: Tim Koschützki (tim@debuggable.com) Felix Geisendörfer (felix@debuggable.com)
+	Source: https://github.com/tim-kos/node-retry
+- rimraf 2.6.2, licensed under ISC
+	Copyright (c) 2011-2023 Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/rimraf
+- rimraf 6.1.2, licensed under ISC
+	Copyright (c) 2011-2023 Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/rimraf
+- safe-buffer 5.2.1, licensed under MIT
+	Copyright Feross Aboukhadijeh
+	Source: https://github.com/feross/safe-buffer
+- saxes 5.0.1, licensed under ISC
+	Copyright Louis-Dominique Dubeau
+	Source: https://github.com/lddubeau/saxes
+- schemes 1.4.0, licensed under MIT
+	Copyright (c) 2015 Peter Müller <munter@fumle.dk>
+	Source: https://github.com/Munter/schemes
+- shx 0.3.2, licensed under MIT
+	Copyright (c) 2016 Nathan Fischer, Ari Porad, Levi Thomason
+	Source: https://github.com/shelljs/shx
+- simple-concat 1.0.1, licensed under MIT
+	Copyright (c) Feross Aboukhadijeh
+	Source: https://github.com/feross/simple-concat
+- simple-get 4.0.1, licensed under MIT
+	Copyright (c) Feross Aboukhadijeh
+	Source: https://github.com/feross/simple-get
+- smart-buffer 4.2.0, licensed under MIT
+	Copyright (c) 2013-2017 Josh Glazebrook
+	Source: https://github.com/JoshGlazebrook/smart-buffer
+- smtp-address-parser 1.1.0, licensed under MIT
+	Copyright (c) 2021 Gene Hightower
+	Source: https://github.com/gene-hightower/smtp-address-parser
+- socks 2.8.7, licensed under MIT
+	Copyright (c) 2013 Josh Glazebrook
+	Source: https://github.com/JoshGlazebrook/socks
+- socks-proxy-agent 8.0.5, licensed under MIT
+	Copyright (c) 2013 Nathan Rajlich <nathan@tootallnate.net>
+	Source: https://github.com/TooTallNate/proxy-agents
+- ssri 12.0.0, licensed under ISC
+	Copyright 2021 (c) npm, Inc.
+	Source: https://github.com/npm/ssri
+- string_decoder 1.3.0, licensed under MIT
+	Copyright Node.js contributors
+	Source: https://github.com/nodejs/string_decoder
+- symbol-tree 3.2.4, licensed under MIT
+	Copyright Joris van der Wel
+	Source: https://github.com/jsdom/js-symbol-tree
+- tar 7.5.2, licensed under BlueOak-1.0.0
+	Source: https://github.com/isaacs/node-tar
+- tar-fs 2.1.4, licensed under MIT
+	Copyright (c) 2014 Mathias Buus
+	Source: https://github.com/mafintosh/tar-fs
+- tar-stream 2.2.0, licensed under MIT
+	Copyright (c) 2014 Mathias Buus
+	Source: https://github.com/mafintosh/tar-stream
+- testdouble 2.1.2, licensed under MIT
+	Copyright (c) 2015 Test Double, LLC.
+	Source: https://github.com/testdouble/testdouble.js
+- tinyglobby 0.2.15, licensed under MIT
+	Copyright (c) 2024 Madeline Gurriarán
+	Source: https://github.com/SuperchupuDev/tinyglobby
+- @tootallnate/once 1.1.2, licensed under MIT
+	Copyright (c) 2020 Nathan Rajlich
+	Source: https://github.com/TooTallNate/once
+- tough-cookie 4.1.4, licensed under BSD-3-Clause
+	Copyright Jeremy Stashewsky
+	Source: https://github.com/salesforce/tough-cookie
+- tr46 2.1.0, licensed under MIT
+	Copyright (c) 2016 Sebastian Mayr
+	Source: https://github.com/jsdom/tr46
+- ts-node 10.9.2, licensed under MIT
+	Copyright (c) 2014 Blake Embrey (hello@blakeembrey.com)
+	Source: https://github.com/TypeStrong/ts-node
+- tunnel-agent 0.6.0, licensed under Apache-2.0
+	Source: https://github.com/mikeal/tunnel-agent
+- typedoc 0.28.2, licensed under Apache-2.0
+	Copyright (c) 2020 Oliver Nightingale
+	Source: https://github.com/TypeStrong/TypeDoc
+- @types/base-64 0.1.3, licensed under MIT
+	Copyright (c) Microsoft Corporation.
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- typescript 5.8.2, licensed under Apache-2.0
+	Copyright (c) Microsoft Corporation
+	Source: https://github.com/microsoft/TypeScript
+- @types/fetch-mock 7.3.2, licensed under MIT
+	Copyright (c) Microsoft Corporation.
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/jest 29.5.12, licensed under MIT
+	Copyright (c) Microsoft Corporation
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/lodash 4.17.0, licensed under MIT
+	Copyright (c) Microsoft Corporation
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/mocha 5.2.5, licensed under MIT
+	Copyright (c) Microsoft Corporation.
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/node 22.13.5, licensed under MIT
+	Copyright Node.js contributors and (c) Microsoft Corporation
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/node 24.10.8, licensed under MIT
+	Copyright Node.js contributors and (c) Microsoft Corporation
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- unique-filename 4.0.0, licensed under MIT
+	Copyright npm, Inc
+	Source: https://github.com/npm/unique-filename
+- unique-slug 5.0.0, licensed under ISC
+	Copyright npm, Inc
+	Source: https://github.com/npm/unique-slug
+- url-parse 1.5.10, licensed under MIT
+	Copyright Arnout Kazemier
+	Source: https://github.com/unshiftio/url-parse
+- util-deprecate 1.0.2, licensed under MIT
+	Copyright Nathan Rajlich
+	Source: https://github.com/TooTallNate/util-deprecate
+- vitest 4.0.17, licensed under MIT
+	Copyright Anthony Fu
+	Source: https://github.com/vitest-dev/vitest
+- w3c-hr-time 1.0.2, licensed under MIT
+	Copyright (c) 2017 Tiancheng "Timothy" Gu and other contributors
+	Source: https://github.com/jsdom/w3c-hr-time
+- w3c-xmlserializer 2.0.0, licensed under MIT
+	Copyright jsdom contributors
+	Source: https://github.com/jsdom/w3c-xmlserializer
+- webidl-conversions 6.1.0, licensed under BSD-2-Clause
+	Copyright (c) 2014, Domenic Denicola All rights reserved.
+	Source: https://github.com/jsdom/webidl-conversions
+- whatwg-encoding 1.0.5, licensed under MIT
+	Copyright © 2016–2018 Domenic Denicola <d@domenic.me>
+	Source: https://github.com/jsdom/whatwg-encoding
+- whatwg-mimetype 2.3.0, licensed under MIT
+	Copyright © Domenic Denicola <d@domenic.me>
+	Source: https://github.com/jsdom/whatwg-mimetype
+- whatwg-url 8.7.0, licensed under MIT
+	Copyright Sebastian Mayr
+	Source: https://github.com/jsdom/whatwg-url
+- wrappy 1.0.2, licensed under ISC
+	Copyright Isaac Z. Schlueter
+	Source: https://github.com/npm/wrappy
+- ws 7.5.10, licensed under MIT
+	Copyright Einar Otto Stangvik
+	Source: https://github.com/websockets/ws
+- xmlchars 2.2.0, licensed under MIT
+	Copyright Louis-Dominique Dubeau
+	Source: https://github.com/lddubeau/xmlchars
+- xml-name-validator 3.0.0, licensed under Apache-2.0
+	Copyright Domenic Denicola
+	Source: https://github.com/jsdom/xml-name-validator
+- yallist 5.0.0, licensed under BlueOak-1.0.0
+	Copyright Isaac Z. Schlueter
+	Source: https://github.com/isaacs/yallist
+
+
+- com.fasterxml.jackson.core/jackson-databind 2.20.1, licensed under Apache-2.0
+	Copyright 2007-, Tatu Saloranta (tatu.saloranta@iki.fi)
+	Source: https://github.com/FasterXML/jackson-databind
+- com.puppycrawl.tools/checkstyle 10.17.0, licensed under LGPL-2.1-or-later
+	Copyright (C) 2001-2025 the original author or authors
+	Source: https://github.com/checkstyle/checkstyle
+- com.squareup.okhttp3/mockwebserver 4.12.0, licensed under Apache-2.0
+	Copyright 2019 Square, Inc.
+	Source: https://github.com/square/okhttp
+- com.squareup.okhttp3/okhttp 4.12.0, licensed under Apache-2.0
+	Copyright 2019 Square, Inc.
+	Source: https://github.com/square/okhttp
+- com.squareup.okhttp3/okhttp-tls 4.12.0, licensed under Apache-2.0
+	Copyright 2019 Square, Inc.
+	Source: https://github.com/square/okhttp
+- gradle wrapper, licensed under Apache-2.0
+	Copyright © 2015-2021 the original authors
+	Source: https://github.com/gradle/gradle/
+- jakarta.annotation/jakarta.annotation-api 2.1.1, licensed under EPL-2.0
+	Copyright (c) 2012, 2024 Oracle and/or its affiliates
+	Source: https://github.com/eclipse-ee4j/common-annotations-api
+- jakarta.inject/jakarta.inject-api 2.0.1, licensed under Apache-2.0
+	Copyright (c) 2018,2020 Eclipse Foundation
+	Source: https://github.com/jakartaee/inject
+- jakarta.validation/jakarta.validation-api 3.0.2, licensed under Apache-2.0
+	Copyright (c) 2019,2023 Eclipse Foundation
+	Source: https://github.com/eclipse-ee4j/beanvalidation-api
+- org.asciidoctor/asciidoctorj 2.5.7, licensed under Apache-2.0
+	Source: https://github.com/asciidoctor/asciidoctorj
+- org.hamcrest/hamcrest-core 2.2, licensed under BSD-3-Clause
+	Copyright (c) 2000-2015 www.hamcrest.org
+	Source: https://github.com/hamcrest/JavaHamcrest
+- org.hamcrest/hamcrest-library 2.2, licensed under BSD-3-Clause
+	Copyright (c) 2000-2015 www.hamcrest.org
+	Source: https://github.com/hamcrest/JavaHamcrest
+- org.hibernate.validator/hibernate-validator 8.0.1.Final, licensed under Apache-2.0
+	Copyright Red Hat Inc. and Hibernate Authors
+	Source: https://github.com/hibernate/hibernate-validator
+- org.jacoco/org.jacoco.agent 0.8.13, licensed under EPL-2.0
+	Copyright (c) 2009, 2025 Mountainminds GmbH & Co. KG and Contributors
+	Source: https://github.com/jacoco/jacoco
+- org.jacoco/org.jacoco.ant 0.8.13, licensed under EPL-2.0
+	Copyright (c) 2009, 2025 Mountainminds GmbH & Co. KG and Contributors
+	Source: https://github.com/jacoco/jacoco
+- org.jruby/jruby-complete 9.1.0.0, licensed under EPL-1.0
+	Copyright (c) 2007-2016 The JRuby project
+	Source: https://github.com/jruby/jruby
+- org.junit.jupiter/junit-jupiter-api 5.10.2, licensed under EPL-2.0
+	Copyright 2015-2025 the original author or authors
+	Source: https://github.com/junit-team/junit-framework
+- org.junit.jupiter/junit-jupiter-engine 5.10.2, licensed under EPL-2.0
+	Copyright 2015-2025 the original author or authors
+	Source: https://github.com/junit-team/junit-framework
+- org.junit.platform/junit-platform-engine 1.10.2, licensed under EPL-2.0
+	Copyright 2015-2025 the original author or authors
+	Source: https://github.com/junit-team/junit-framework
+- org.junit.platform/junit-platform-launcher 1.10.2, licensed under EPL-2.0
+	Copyright 2015-2025 the original author or authors
+	Source: https://github.com/junit-team/junit-framework
+- org.mockito/mockito-inline 5.2.0, licensed under MIT
+	Copyright (c) 2007 Mockito
+	Source: https://github.com/mockito/mockito
+- org.mockito/mockito-junit-jupiter 5.11.0, licensed under MIT
+	Copyright (c) 2007 Mockito
+	Source: https://github.com/mockito/mockito
+- org.slf4j/slf4j-api 2.0.13, licensed under MIT
+	Copyright (c) 2004-2022 QOS.ch Sarl (Switzerland)
+	Source: https://github.com/qos-ch/slf4j
+- org.slf4j/slf4j-log4j12 2.0.13, licensed under MIT
+	Copyright (c) 2004-2022 QOS.ch Sarl (Switzerland)
+	Source: https://github.com/qos-ch/slf4j
+- org.springframework.boot/spring-boot-autoconfigure 3.5.9, licensed under Apache-2.0
+	Copyright (c) 2012-2025 VMware, Inc.
+	Source: https://github.com/spring-projects/spring-boot
+- org.springframework.boot/spring-boot-configuration-processor 3.5.9, licensed under Apache-2.0
+	Copyright (c) 2012-2025 VMware, Inc.
+	Source: https://github.com/spring-projects/spring-boot
+- org.springframework/spring-test 6.2.15, licensed under Apache-2.0
+	Copyright (c) 2012-2025 VMware, Inc.
+	Source: https://github.com/spring-projects/spring-framework
+- org.springframework/spring-web 6.2.15, licensed under Apache-2.0
+	Copyright (c) 2012-2025 VMware, Inc.
+	Source: https://github.com/spring-projects/spring-framework
+
+
+NOTICE file of cyclonedx-npm
+---------------------------------
+
+CycloneDX generator for NPM projects
+Copyright (c) OWASP Foundation. All Rights Reserved.
+
+This product includes software developed by the
+CycloneDX community (https://cyclonedx.org/).
+
+
+License Texts
+-------------
+
+Complete license texts for all included third-party components can
+be found in the licenses/ directory, attributions in file NOTICES.
+
+
+General Notice
+--------------
+
+The mgm A12 Platform is dual-licensed under the EUPL-1.2 or a
+commercial license. Third-party components remain under their
+respective licenses. For details, see the file LICENSE.
+
+“mgm A12” is a registered trademark of mgm technology partners GmbH
+(EU/DE). All other trademarks are the property of their respective
+owners.
+
+End of THIRD_PARTY_NOTICES

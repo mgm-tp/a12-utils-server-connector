@@ -1,0 +1,8 @@
+{
+  "name": "Utils Connector",
+  "entryPoints": ["./src"],
+  "excludeExternals": "true",
+  "excludeInternal": "false",
+  "out": "../build/docs/assets/typedoc",
+  "theme": "default"
+}

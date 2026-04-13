@@ -1,0 +1,14 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    api project(':utils-rest-server-connector')
+
+    api libs.springBootAutoconfigure
+    api libs.springBootConfigProcessor
+    api libs.inject
+    api libs.annotationApi
+}
+
+description = 'Server Connector:: REST:: Autoconfigure'

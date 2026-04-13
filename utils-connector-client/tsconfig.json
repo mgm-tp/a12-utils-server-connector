@@ -1,0 +1,14 @@
+{
+  "extends": "./node_modules/@com.mgmtp.a12.devtools/devtools/configs/tsconfig",
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "lib/main",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "mocha",
+      "node"
+    ]
+  }
+}

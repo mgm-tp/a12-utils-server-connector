@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+}
+
+description = 'Server Connector:: REST'
+
+dependencies {
+    api  project(':utils-server-connector-api')
+    
+	api libs.springWeb
+	api libs.slf
+    api libs.validationApi
+    api libs.hibernateValidator
+	api libs.okhttp
+
+    testImplementation libs.bundles.springTest
+    testImplementation libs.okhttpMockwebserver
+    testImplementation libs.okhttpTls
+
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}

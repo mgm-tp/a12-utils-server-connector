@@ -1,0 +1,8 @@
+rootProject.name = 'Server_Connector'
+include(':utils-rest-server-connector-spring-boot-autoconfigure')
+include(':utils-server-connector-api')
+include(':utils-rest-server-connector')
+include(':utils-connector')
+project(":utils-connector").projectDir = file('utils-connector-client')
+include(':utils-connector-codemod')
+project(":utils-connector-codemod").projectDir = file('utils-server-connector-codemod')
