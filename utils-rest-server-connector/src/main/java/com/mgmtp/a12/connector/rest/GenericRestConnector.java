@@ -33,100 +33,161 @@ package com.mgmtp.a12.connector.rest;
 
 import java.net.URI;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import jakarta.validation.constraints.NotNull;
 
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.core5.util.Timeout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.client.ResponseErrorHandler;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
-
-import okhttp3.OkHttpClient;
 
 public class GenericRestConnector {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(GenericRestConnector.class);
+	private static final Timeout DEFAULT_TIMEOUT = Timeout.ofMinutes(5);
 
-	private RestTemplate restTemplate;
+	private RestClient restClient;
+	private final RestClient.Builder restClientBuilder;
 
-	public GenericRestConnector(OkHttpClient okHttpClient, ResponseErrorHandler errorHandler, List<HttpMessageConverter<?>> messageConvertes,
+	public GenericRestConnector(HttpClient httpClient, ResponseErrorHandler errorHandler, List<HttpMessageConverter<?>> messageConverters,
 		ClientHttpRequestInterceptor... interceptors) {
-		/*
-		 *  We decided to keep this deprecated because upgrading to use JdkClientHttpRequestFactory from Spring resulted in a 413 Payload Too Large error
-		 *  when creating the Document model from DataServices
-		 */
-		OkHttp3ClientHttpRequestFactory okHttp3ClientHttpRequestFactory =
-			new OkHttp3ClientHttpRequestFactory(Optional.ofNullable(okHttpClient).orElseGet(GenericRestConnector::createDefaultOkHttpClient));
+		HttpComponentsClientHttpRequestFactory requestFactory =
+			new HttpComponentsClientHttpRequestFactory(Optional.ofNullable(httpClient).orElseGet(GenericRestConnector::createDefaultHttpClient));
 
-		restTemplate = new RestTemplate(okHttp3ClientHttpRequestFactory);
+		List<ClientHttpRequestInterceptor> allInterceptors = Arrays.asList(
+			Optional.ofNullable(interceptors).orElse(new ClientHttpRequestInterceptor[0]));
 
-		restTemplate.setInterceptors(Arrays.asList(Optional.ofNullable(interceptors).orElse(new ClientHttpRequestInterceptor[0])));
+		this.restClientBuilder = RestClient.builder()
+			.requestFactory(requestFactory);
+
+		restClientBuilder.configureMessageConverters(converters -> {
+			converters.registerDefaults();
+			if (!CollectionUtils.isEmpty(messageConverters)) {
+				messageConverters.forEach(converters::addCustomConverter);
+			}
+		});
+
+		if (!allInterceptors.isEmpty()) {
+			restClientBuilder.requestInterceptors(list -> list.addAll(allInterceptors));
+		}
+
 		if (errorHandler != null) {
-			restTemplate.setErrorHandler(errorHandler);
+			restClientBuilder.defaultStatusHandler(
+				HttpStatusCode::isError,
+				errorHandler::handleError
+			);
 		}
-		if (!CollectionUtils.isEmpty(messageConvertes)) {
-			List<HttpMessageConverter<?>> existingConverters = restTemplate.getMessageConverters();
-			existingConverters.addAll(messageConvertes);
-			restTemplate.setMessageConverters(existingConverters);
-		}
+
+		this.restClient = restClientBuilder.build();
 	}
 
 	public GenericRestConnector(ResponseErrorHandler errorHandler,
 		List<HttpMessageConverter<?>> messageConverters,
 		ClientHttpRequestInterceptor... interceptor) {
-		this(null, errorHandler, messageConverters,
-			interceptor);
+		this(null, errorHandler, messageConverters, interceptor);
 	}
 
 	public <In, Out> ResponseEntity<Out> executeMethod(String url, HttpMethod method, @NotNull RestServerRequest<In> input, Class<Out> returnType)
 		throws RestClientException {
-		return restTemplate.exchange(url, method, buildHttpEntityRequest(input, url), returnType);
+		return executeRequest(URI.create(url), method, input, returnType);
 	}
 
 	public <In, Out> ResponseEntity<Out> executeMethod(URI uri, HttpMethod method, @NotNull RestServerRequest<In> input, Class<Out> returnType)
 		throws RestClientException {
-		return restTemplate.exchange(uri, method, buildHttpEntityRequest(input, uri.toString()), returnType);
+		return executeRequest(uri, method, input, returnType);
 	}
 
-	static OkHttpClient createDefaultOkHttpClient() {
-		// Keep the timeout configuration are compatible with SimpleClientHttpRequestFactory
-		return new OkHttpClient().newBuilder()
-			.connectTimeout(0, TimeUnit.MILLISECONDS)
-			.readTimeout(0, TimeUnit.MILLISECONDS)
-			.writeTimeout(0, TimeUnit.MILLISECONDS)
+	private <In, Out> ResponseEntity<Out> executeRequest(URI uri, HttpMethod method, @NotNull RestServerRequest<In> input, Class<Out> returnType) {
+		Assert.notNull(input, "Input must be specified");
+
+		logRequest(uri.toString(), input);
+
+		RestClient.RequestBodySpec requestSpec = restClient.method(method)
+			.uri(uri)
+			.contentType(input.getContentType())
+			.accept(input.getAccept())
+			.headers(headers -> input.getAdditionalHeaders().forEach(headers::addAll));
+
+		if (input.getPayload() != null) {
+			requestSpec.body(input.getPayload());
+		}
+
+		return requestSpec
+			.retrieve()
+			.toEntity(returnType);
+	}
+
+	private <In> void logRequest(String url, RestServerRequest<In> input) {
+		String payloadType = Optional.ofNullable(input.getPayload())
+			.map(payload -> payload.getClass().getName())
+			.orElse("null");
+		LOGGER.debug("Connecting to server URL=[{}], ContentType=[{}], Accept=[{}], AdditionalHeaders=[{}], PayloadType=[{}]",
+			url, input.getContentType(), input.getAccept(), input.getAdditionalHeaders(), payloadType);
+	}
+
+	static HttpClient createDefaultHttpClient() {
+		ConnectionConfig connectionConfig = ConnectionConfig.custom()
+			.setConnectTimeout(DEFAULT_TIMEOUT)
+			.build();
+
+		SocketConfig socketConfig = SocketConfig.custom()
+			.setSoTimeout(DEFAULT_TIMEOUT)
+			.build();
+
+		PoolingHttpClientConnectionManager connectionManager = PoolingHttpClientConnectionManagerBuilder.create()
+			.setDefaultConnectionConfig(connectionConfig)
+			.setDefaultSocketConfig(socketConfig)
+			.build();
+
+		RequestConfig requestConfig = RequestConfig.custom()
+			.setResponseTimeout(DEFAULT_TIMEOUT)
+			.setConnectionRequestTimeout(DEFAULT_TIMEOUT)
+			.build();
+
+		return HttpClients.custom()
+			.evictIdleConnections(DEFAULT_TIMEOUT)
+			.evictExpiredConnections()
+			.setConnectionManager(connectionManager)
+			.setDefaultRequestConfig(requestConfig)
 			.build();
 	}
 
-	RestTemplate getRestTemplate() {
-		return restTemplate;
+	RestClient getRestClient() {
+		return restClient;
 	}
 
-	private <In> HttpEntity<In> buildHttpEntityRequest(@NotNull RestServerRequest<In> input, String url) {
-		Assert.notNull(input, "Input must be specified");
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(input.getContentType());
-		headers.setAccept(Collections.singletonList(input.getAccept()));
-		headers.addAll(input.getAdditionalHeaders());
+	/**
+	 * Returns the RestClient.Builder for testing purposes.
+	 * Use this with MockRestServiceServer.bindTo(builder) in tests.
+	 * After binding, call rebuildRestClient() to apply the mock.
+	 */
+	RestClient.Builder getRestClientBuilder() {
+		return restClientBuilder;
+	}
 
-		HttpEntity<In> request = new HttpEntity<>(input.getPayload(), headers);
-		String payloadType = Optional.ofNullable(input.getPayload()).map(payload -> payload.getClass().getName()).orElse("null");
-		LOGGER.debug("Connecting to server URL=[{}], ContentType=[{}], Accept=[{}], AdditionalHeaders=[{}], PayloadType=[{}]", url,
-			request.getHeaders().getContentType(), input.getAccept(), input.getAdditionalHeaders(), payloadType);
-
-		return request;
+	/**
+	 * Rebuilds the RestClient from the builder for testing purposes.
+	 * Call this after MockRestServiceServer.bindTo(builder) to apply the mock request factory.
+	 */
+	void rebuildRestClient() {
+		this.restClient = restClientBuilder.build();
 	}
 }

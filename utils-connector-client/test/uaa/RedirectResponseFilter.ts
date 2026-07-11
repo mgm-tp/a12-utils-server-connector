@@ -29,7 +29,7 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { ResponseFilterResult, ResponseFilter } from "../../src/index.js";
+import type { ResponseFilterResult, ResponseFilter } from "../../src/index.js";
 
 export class RedirectResponseFilter implements ResponseFilter {
 	doResponseFilter(response: Response | undefined): ResponseFilterResult {

@@ -33,18 +33,16 @@ package com.mgmtp.a12.connector.rest;
 
 import java.util.List;
 
+import org.apache.hc.client5.http.classic.HttpClient;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.client.ResponseErrorHandler;
-
-import okhttp3.OkHttpClient;
 
 public class RestServerConnectorFactoryBuilder {
 
 	private ClientHttpRequestInterceptor[] interceptors;
 	private ResponseErrorHandler[] errorHandlers;
 	private List<HttpMessageConverter<?>> messageConverters;
-	private OkHttpClient okHttpClient;
+	private HttpClient httpClient;
 
 	private RestServerConnectorFactoryBuilder() {
 	}
@@ -68,13 +66,13 @@ public class RestServerConnectorFactoryBuilder {
 		return this;
 	}
 
-	public RestServerConnectorFactoryBuilder withOkHttpClient(OkHttpClient okHttpClient) {
-		this.okHttpClient = okHttpClient;
+	public RestServerConnectorFactoryBuilder withHttpClient(HttpClient httpClient) {
+		this.httpClient = httpClient;
 		return this;
 	}
 
 	public RestServerConnectorFactory build() {
-		return new RestServerConnectorFactory(okHttpClient, errorHandlers, messageConverters, interceptors);
+		return new RestServerConnectorFactory(httpClient, errorHandlers, messageConverters, interceptors);
 	}
 
 }

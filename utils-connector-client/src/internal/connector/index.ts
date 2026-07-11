@@ -30,8 +30,6 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 export { ConnectorLocator } from "./ConnectorLocator.js";
-export {
-	RestServerConnector,
-	RestRequestPayload
-} from "./RestServerConnector.js";
-export { ServerConnector, CommonRequest } from "./ServerConnector.js";
+export { RestServerConnector } from "./RestServerConnector.js";
+export type { RestRequestPayload } from "./RestServerConnector.js";
+export type { ServerConnector, CommonRequest } from "./ServerConnector.js";

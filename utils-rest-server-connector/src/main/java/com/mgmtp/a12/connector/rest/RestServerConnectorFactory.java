@@ -36,12 +36,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.hc.client5.http.classic.HttpClient;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.client.DefaultResponseErrorHandler;
-import org.springframework.web.client.ResponseErrorHandler;
-
-import okhttp3.OkHttpClient;
 
 public class RestServerConnectorFactory {
 
@@ -52,12 +49,11 @@ public class RestServerConnectorFactory {
 		this(null, errorHandlers, messageConvertes, interceptors);
 	}
 
-	public RestServerConnectorFactory(OkHttpClient okHttpClient, ResponseErrorHandler[] errorHandlers, List<HttpMessageConverter<?>> messageConverters,
+	public RestServerConnectorFactory(HttpClient httpClient, ResponseErrorHandler[] errorHandlers, List<HttpMessageConverter<?>> messageConverters,
 		ClientHttpRequestInterceptor... interceptors) {
 		List<ResponseErrorHandler> errorHandlersList = new LinkedList<>(Arrays.asList(Optional.ofNullable(errorHandlers).orElse(new ResponseErrorHandler[0])));
-		errorHandlersList.add(new DefaultResponseErrorHandler());
 		DelegatingErrorHandler delegatingErrorHandler = new DelegatingErrorHandler(errorHandlersList);
-		genericRestConnector = new GenericRestConnector(okHttpClient, delegatingErrorHandler, messageConverters, interceptors);
+		genericRestConnector = new GenericRestConnector(httpClient, delegatingErrorHandler, messageConverters, interceptors);
 	}
 
 	public RestGetConnector createRestGetConnector() {

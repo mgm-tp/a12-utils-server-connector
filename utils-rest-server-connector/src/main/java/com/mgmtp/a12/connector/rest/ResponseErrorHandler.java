@@ -29,42 +29,36 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import type {
-	RequestFilterPayload,
-	RequestFilterResult,
-	RequestFilter
-} from "./RequestFilter.js";
+package com.mgmtp.a12.connector.rest;
+
+import java.io.IOException;
+
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.client.ClientHttpResponse;
 
 /**
- * Default HeadersFilter this will always pass in Accept and Content-Type as application/json and charset-utf8
+ * Strategy interface for handling REST client response errors.
+ * This replaces the deprecated Spring ResponseErrorHandler which was removed in Spring Framework 7.
  */
-export class HeadersFilter implements RequestFilter {
-	private APPLICATION_JSON = "application/json";
-	private CHARSET_UTF8 = "charset=utf8";
+public interface ResponseErrorHandler {
 
-	canHandleRequest(): boolean {
-		return true;
+	/**
+	 * Indicate whether the given response status is an error.
+	 * @param httpStatusCode the response status
+	 * @return {@code true} if the httpStatusCode indicates an error; {@code false} otherwise
+	 */
+	default boolean hasError(HttpStatusCode httpStatusCode) {
+		return httpStatusCode.isError();
 	}
-	doRequestFilter(request: RequestFilterPayload): RequestFilterResult {
-		if (!request || !request.request) {
-			throw new Error("request init may not be falsy");
-		}
 
-		if (!request.request.headers) {
-			request.request.headers = new Headers();
-		}
+	/**
+	 * Handle the error in the given response.
+	 *
+	 * @param request the request that resulted in the error
+	 * @param response the response containing the error details
+	 * @throws IOException in case of I/O errors
+	 */
+	void handleError(HttpRequest request, ClientHttpResponse response) throws IOException;
 
-		const headers = new Headers({});
-		headers.append("Accept", this.APPLICATION_JSON);
-		headers.append(
-			"Content-Type",
-			this.APPLICATION_JSON + ";" + this.CHARSET_UTF8
-		);
-		request.request.headers = headers;
-
-		return {
-			request: request.request,
-			continue: true
-		};
-	}
 }

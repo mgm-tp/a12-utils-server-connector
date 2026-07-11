@@ -29,18 +29,27 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { RestRequestPayload } from "../../index.js";
+import type { RestRequestPayload } from "../../index.js";
 
 import { DefaultErrorResponseFilter } from "./response/DefaultErrorResponseFilter.js";
-import {
+import type {
 	RequestFilter,
 	RequestFilterPayload,
 	RequestFilterResult
 } from "./request/RequestFilter.js";
-import {
+import type {
 	ResponseFilter,
 	ResponseFilterResult
 } from "./response/ResponseFilter.js";
+
+function isAbortError(error: unknown): boolean {
+	return (
+		typeof error === "object" &&
+		error !== null &&
+		"name" in error &&
+		(error as { name: unknown }).name === "AbortError"
+	);
+}
 
 /**
  * FilterChain is considered internal mechanism to construct extension points regarding build request
@@ -109,8 +118,20 @@ export class FilterChain {
 				response = await responseInput;
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			} catch (error) {
+				// An aborted request (e.g. the application cancelled it via an
+				// AbortSignal) must reach the application code so it can be handled
+				// as a cancellation rather than a server failure. Re-throw the
+				// original AbortError instead of masking it as a synthetic 503.
+				if (isAbortError(error)) {
+					throw error;
+				}
+				// In the future: stop wrapping network-level failures
+				// (DNS, connection refused, CORS, ...) in a synthetic 503 and let
+				// the original error propagate, so the real cause is visible to the
+				// caller. Kept for now to preserve backward compatibility for
+				// consumers that rely on the { status: 503 } shape.
 				await Promise.reject(
-					new Response(new Blob(), {
+					new Response(null, {
 						status: 503,
 						statusText: "Service Unavailable"
 					})
@@ -123,7 +144,7 @@ export class FilterChain {
 					responseFilter.doResponseFilter(response);
 				if (result.error !== undefined) {
 					await Promise.reject(
-						new Response(new Blob(), {
+						new Response(null, {
 							status: result.response?.status,
 							statusText: result.error.message
 						})

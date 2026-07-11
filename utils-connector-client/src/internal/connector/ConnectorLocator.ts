@@ -29,7 +29,7 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { ServerConnector } from "./ServerConnector.js";
+import type { ServerConnector } from "./ServerConnector.js";
 /**
  * ConnectorLocator will help you to hold your ServerConnector instance.
  * By using this you can have singleton of connector access whenever you need it.

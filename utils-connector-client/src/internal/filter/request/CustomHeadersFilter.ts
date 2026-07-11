@@ -29,17 +29,18 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import {
+import type {
 	RequestFilter,
 	RequestFilterPayload,
 	RequestFilterResult
 } from "./RequestFilter.js";
 
 /**
- * This is custom header filter which need to register at first of RequestFilter.
- * In order to make sure all customHeaders are taken.
- * All other filter related to Headers need to be registered after this one otherwise it will be overrided
- * eg: XsrfFilter
+ * This filter merges custom headers with the existing (default) headers.
+ * If a custom header conflicts with a default header, the custom value takes precedence.
+ * Headers with undefined values (e.g., `["headerName"]` without a second element) act as
+ * removal signals — the header is excluded from the final request, even if it existed in the default headers.
+ * Other filters related to headers (e.g., XsrfFilter) registered after this one will append to the merged result.
  */
 export class CustomHeadersFilter implements RequestFilter {
 	canHandleRequest(request: RequestFilterPayload): boolean {
@@ -60,7 +61,6 @@ export class CustomHeadersFilter implements RequestFilter {
 
 		if (
 			request.payload === undefined ||
-			request.payload === undefined ||
 			request.payload.customHeaders === undefined ||
 			request.payload.customHeaders.length === 0
 		) {
@@ -69,16 +69,27 @@ export class CustomHeadersFilter implements RequestFilter {
 				continue: true
 			};
 		}
-		const newHeaders = new Headers({});
+		const existingHeaders = new Headers(request.request.headers);
+		const mergedHeaders = new Headers();
+		const removedKeys = new Set<string>();
 		for (const kvp of request.payload.customHeaders) {
 			const key = kvp[0];
 			const value = kvp[1];
 			if (!key) {
 				continue;
 			}
-			newHeaders.append(key, value);
+			if (value === undefined || value === null) {
+				removedKeys.add(key.toLowerCase());
+				continue;
+			}
+			mergedHeaders.append(key, value);
 		}
-		request.request.headers = newHeaders;
+		existingHeaders.forEach((value, key) => {
+			if (!mergedHeaders.has(key) && !removedKeys.has(key.toLowerCase())) {
+				mergedHeaders.append(key, value);
+			}
+		});
+		request.request.headers = mergedHeaders;
 
 		return {
 			request: request.request,

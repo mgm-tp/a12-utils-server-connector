@@ -29,8 +29,8 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { ResponseFilterResult } from "../../src/index.js";
-import { ResponseFilter } from "../../src/internal/filter/response/ResponseFilter.js";
+import type { ResponseFilterResult } from "../../src/index.js";
+import type { ResponseFilter } from "../../src/internal/filter/response/ResponseFilter.js";
 
 import { NotAuthorizedError } from "./Errors.js";
 

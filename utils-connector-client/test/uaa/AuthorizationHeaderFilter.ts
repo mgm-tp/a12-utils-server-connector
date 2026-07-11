@@ -29,8 +29,8 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { RequestFilterResult } from "../../src/index.js";
-import {
+import type { RequestFilterResult } from "../../src/index.js";
+import type {
 	RequestFilterPayload,
 	RequestFilter
 } from "../../src/internal/filter/request/RequestFilter.js";

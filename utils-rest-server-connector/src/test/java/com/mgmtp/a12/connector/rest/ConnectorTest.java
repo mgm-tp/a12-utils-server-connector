@@ -46,23 +46,24 @@ import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.client.match.MockRestRequestMatchers;
 import org.springframework.test.web.client.response.MockRestResponseCreators;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mgmtp.a12.connector.ServerConnector;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class ConnectorTest {
 
 	private RestServerConnectorFactory restConnectorFactory;
 	private ObjectMapper mapper = new ObjectMapper();
-	private RestTemplate restTemplate;
+	private RestClient.Builder restClientBuilder;
 
 	@BeforeAll
 	public void init() {
 		restConnectorFactory = RestServerConnectorFactoryBuilder.create().withInterceptors(new AcceptHeaderInterceptor()).build();
-		restTemplate = restConnectorFactory.getGenericRestConnector().getRestTemplate();
+		restClientBuilder = restConnectorFactory.getGenericRestConnector().getRestClientBuilder();
 	}
 
 	@Test
@@ -101,25 +102,31 @@ public class ConnectorTest {
 		responseHeaders.add("Check", "Passed");
 		URI uri = new URI("http://localhost:6666/test/13");
 
-		mockRestTemplate(uri, method, responseHeaders, obj);
+		mockRestClient(uri, method, responseHeaders, obj);
 		RestServerResponse<TestObject> restResponse =
 			(RestServerResponse<TestObject>) connector.callServer(uri.toString(), RestServerRequest.empty(), TestObject.class);
 		assertResponse(restResponse, responseHeaders, obj);
 
-		mockRestTemplate(uri, method, responseHeaders, obj);
+		mockRestClient(uri, method, responseHeaders, obj);
 		restResponse =
 			(RestServerResponse<TestObject>) connector.callServer(uri, RestServerRequest.empty(), TestObject.class);
 		assertResponse(restResponse, responseHeaders, obj);
 	}
 
-	private void mockRestTemplate(URI uri, HttpMethod method, HttpHeaders responseHeaders, TestObject obj) throws JsonProcessingException {
-		MockRestServiceServer.createServer(restTemplate).expect(ExpectedCount.once(),
-				MockRestRequestMatchers.requestTo(uri))
-			.andExpect(MockRestRequestMatchers.method(method))
-			.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK)
-				.contentType(MediaType.APPLICATION_JSON)
-				.headers(responseHeaders)
-				.body(mapper.writeValueAsString(obj)));
+	private void mockRestClient(URI uri, HttpMethod method, HttpHeaders responseHeaders, TestObject obj) {
+		try {
+			MockRestServiceServer.bindTo(restClientBuilder).build().expect(ExpectedCount.once(),
+					MockRestRequestMatchers.requestTo(uri))
+				.andExpect(MockRestRequestMatchers.method(method))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK)
+					.contentType(MediaType.APPLICATION_JSON)
+					.headers(responseHeaders)
+					.body(mapper.writeValueAsString(obj)));
+			// Rebuild RestClient to apply the mock request factory
+			restConnectorFactory.getGenericRestConnector().rebuildRestClient();
+		} catch (JacksonException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private void assertResponse(RestServerResponse<TestObject> restResponse, HttpHeaders responseHeaders, TestObject obj) {

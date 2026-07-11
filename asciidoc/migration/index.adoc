@@ -22,4 +22,6 @@ CAUTION: Please have a look at link:/docs/overall/migration_guide/index.html[Mig
 NOTE: UAA provides Hypermod (utils-connector-codemod) for automatic migration of breaking changes of utils-connector-client.
 Please read link:/docs/overall/migration_guide/index.html#_usage_of_hypermod_for_frontend_components[how to apply Hypermod recipes] in A12 frontend components.
 
-include::migrate-202506-ext4.adoc[]
+include::migrate-202606-pre1.adoc[]
+
+include::migrate-202606-pre4.adoc[]

@@ -29,7 +29,7 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { RestRequestPayload } from "../../connector/RestServerConnector.js";
+import type { RestRequestPayload } from "../../connector/RestServerConnector.js";
 
 /**
  * If you would like to manipulate your request init instance.

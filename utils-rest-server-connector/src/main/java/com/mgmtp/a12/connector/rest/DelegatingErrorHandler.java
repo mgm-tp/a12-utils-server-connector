@@ -32,43 +32,36 @@
 package com.mgmtp.a12.connector.rest;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.web.client.ResponseErrorHandler;
 
+/**
+ * A delegating error handler that delegates error handling to a list of registered handlers.
+ */
 class DelegatingErrorHandler implements ResponseErrorHandler {
 
-	private List<ResponseErrorHandler> errorHandlers = Collections.emptyList();
+	private List<ResponseErrorHandler> errorHandlers;
 
 	public DelegatingErrorHandler(List<ResponseErrorHandler> errorHandlers) {
 		this.errorHandlers = errorHandlers;
 	}
 
 	@Override
-	public boolean hasError(ClientHttpResponse response) throws IOException {
-		return findProcessingHandler(response).isPresent();
+	public boolean hasError(HttpStatusCode httpStatusCode) {
+		return errorHandlers.stream().anyMatch(e -> e.hasError(httpStatusCode));
 	}
 
 	@Override
-	public void handleError(ClientHttpResponse response) throws IOException {
-		findProcessingHandler(response)
-			.orElseThrow(() -> new IllegalStateException("Missing handler for error processing"))
-			.handleError(response);
-	}
-
-	private Optional<ResponseErrorHandler> findProcessingHandler(ClientHttpResponse response) {
-		return errorHandlers.stream()
-			.filter(handler -> {
-				try {
-					return handler.hasError(response);
-				} catch (IOException e) {
-					return true;
-				}
-			})
-			.findFirst();
+	public void handleError(HttpRequest request, ClientHttpResponse response) throws IOException {
+		HttpStatusCode statusCode = response.getStatusCode();
+		errorHandlers.stream()
+			.filter(handler -> handler.hasError(statusCode))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException("Missing error handler for status code: " + statusCode))
+			.handleError(request, response);
 	}
 
 }

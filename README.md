@@ -51,11 +51,11 @@ dependencies {
 
 The following tools are required in order to build this repository:
 
-| Tool                              |  Version |
-|-----------------------------------|---------:|
-| [JDK](https://openjdk.org/)       |   `21.x` |
-| [Node](https://nodejs.org/)       |   `22.x` |
-| [Gradle](https://gradle.org/)     | `8.14.x` |
+| Tool                              | Version |
+|-----------------------------------|--------:|
+| [JDK](https://openjdk.org/)       |  `21.x` |
+| [Node](https://nodejs.org/)       |  `22.x` |
+| [Gradle](https://gradle.org/)     | `9.3.x` |
 
 #####
 
@@ -101,7 +101,10 @@ For the server (using the Gradle Wrapper), run from the project root:
 ./gradlew check
 ```
 
+---
+
 ### Documentation
+
 - Full technical documentation is available at [GetA12.com](https://GetA12.com).
 - The website also provides access to the **A12 Discourse Community Forum**.
 

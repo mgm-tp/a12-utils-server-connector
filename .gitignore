@@ -16,3 +16,13 @@
 /javadoc/**
 **/generatedDoc*.json
 **/bin/**
+/.claude/
+/.opencode/
+/.repomixignore
+/AGENTS.md
+/CLAUDE.md
+/install-kit.sh
+/release-manifest.json
+/repomix-output.xml
+/plans/
+/docs/

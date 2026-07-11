@@ -32,19 +32,20 @@
 import "isomorphic-fetch";
 import * as Assert from "node:assert";
 
-import fetchMock, { MockOptions } from "fetch-mock";
+import fetchMock from "fetch-mock";
+import type { MockOptions } from "fetch-mock";
 
-import {
+import { RestServerConnector } from "../src/index.js";
+import type {
 	RequestFilter,
 	ResponseFilter,
-	ResponseFilterResult,
-	RestServerConnector
+	ResponseFilterResult
 } from "../src/index.js";
 import { InitRequestFilter } from "../src/internal/filter/request/InitRequestFilter.js";
 import { BodyFilter } from "../src/internal/filter/request/BodyFilter.js";
 import { HeadersFilter } from "../src/internal/filter/request/HeadersFilter.js";
 import { OkResponseFilter } from "../src/internal/filter/response/OkResponseFilter.js";
-import { RestRequestPayload } from "../src/internal/connector/RestServerConnector.js";
+import type { RestRequestPayload } from "../src/internal/connector/RestServerConnector.js";
 
 import { XsrfTokenFilter } from "./uaa/XsrfTokenFilter.js";
 import { AuthorizationHeaderFilter } from "./uaa/AuthorizationHeaderFilter.js";

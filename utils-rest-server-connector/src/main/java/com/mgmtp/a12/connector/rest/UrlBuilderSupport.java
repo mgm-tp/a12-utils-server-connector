@@ -50,7 +50,7 @@ public class UrlBuilderSupport {
 	}
 
 	public UriComponentsBuilder createBuilder() {
-		return UriComponentsBuilder.fromHttpUrl(baseUrl).pathSegment(contexts);
+		return UriComponentsBuilder.fromUriString(baseUrl).pathSegment(contexts);
 	}
 
 }

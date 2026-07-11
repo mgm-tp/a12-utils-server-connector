@@ -29,7 +29,7 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import { RequestFilter, ResponseFilter } from "../../index.js";
+import type { RequestFilter, ResponseFilter } from "../../index.js";
 
 import { FilterChain } from "../filter/FilterChain.js";
 import { InitRequestFilter } from "../filter/request/InitRequestFilter.js";
@@ -39,7 +39,7 @@ import { OkResponseFilter } from "../filter/response/OkResponseFilter.js";
 import { CustomHeadersFilter } from "../filter/request/CustomHeadersFilter.js";
 import { SignalHeadersFilter } from "../filter/request/SignalHeadersFilter.js";
 
-import { CommonRequest, ServerConnector } from "./ServerConnector.js";
+import type { CommonRequest, ServerConnector } from "./ServerConnector.js";
 
 /**
  * REST request payload at runtime. Please pass in this structure during your fetch method.
