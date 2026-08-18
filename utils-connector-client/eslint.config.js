@@ -33,13 +33,13 @@ import { readFile } from "node:fs/promises";
 
 import notice from "eslint-plugin-notice";
 
-import devtools from "@com.mgmtp.a12.devtools/eslint-config";
+import { strict as devtoolsStrict } from "@com.mgmtp.a12.devtools/eslint-config";
 
 const a12DualLicense = await readFile(`license/license-header.txt`, "utf-8");
 
 /** @type { import("eslint").Linter.Config[] } */
 export default [
-	...devtools.strict,
+	...devtoolsStrict,
 	{
 		name: "ignores",
 		ignores: ["**/lib/", "**/build/", "**/node_modules"]

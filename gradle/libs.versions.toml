@@ -1,7 +1,7 @@
 [versions]
-jackson = "2.20.1"
-spring = "6.2.15"
-springBoot = "3.5.9"
+jackson = "2.22.0"
+spring = "6.2.19"
+springBoot = "3.5.15"
 annotationApi = "2.1.1"
 validationApi = "3.0.2"
 inject = "2.0.1"

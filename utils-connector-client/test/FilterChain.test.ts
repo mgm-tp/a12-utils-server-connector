@@ -88,4 +88,46 @@ describe("com.mgmtp.a12.connector.filter.filterChain", () => {
 			"request init default is not null or undefined"
 		);
 	});
+
+	// An aborted request must surface the original AbortError to the caller instead of being masked as a 503.
+	it("startResponseFilter re-throws AbortError instead of masking it as 503", async () => {
+		const filterChain: FilterChain = new FilterChain();
+		const abortError = new DOMException(
+			"The operation was aborted.",
+			"AbortError"
+		);
+
+		await Assert.rejects(
+			() => filterChain.startResponseFilter(Promise.reject(abortError)),
+			(thrown: unknown) => {
+				Assert.strictEqual(
+					thrown,
+					abortError,
+					"the original AbortError should be re-thrown unchanged"
+				);
+				return true;
+			}
+		);
+	});
+
+	it("startResponseFilter still wraps other network failures as 503", async () => {
+		const filterChain: FilterChain = new FilterChain();
+
+		await Assert.rejects(
+			() =>
+				filterChain.startResponseFilter(
+					Promise.reject(new TypeError("Failed to fetch"))
+				),
+			(thrown: unknown) => {
+				Assert.ok(
+					thrown instanceof Response,
+					"thrown value should be a Response instance"
+				);
+				const response = thrown as Response;
+				Assert.strictEqual(response.status, 503);
+				Assert.strictEqual(response.statusText, "Service Unavailable");
+				return true;
+			}
+		);
+	});
 });

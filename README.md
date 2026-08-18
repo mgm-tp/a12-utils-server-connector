@@ -101,7 +101,10 @@ For the server (using the Gradle Wrapper), run from the project root:
 ./gradlew check
 ```
 
+---
+
 ### Documentation
+
 - Full technical documentation is available at [GetA12.com](https://GetA12.com).
 - The website also provides access to the **A12 Discourse Community Forum**.
 
