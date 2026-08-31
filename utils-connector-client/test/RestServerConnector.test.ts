@@ -29,11 +29,13 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import "isomorphic-fetch";
 import * as Assert from "node:assert";
 
-import fetchMock from "fetch-mock";
-import type { MockOptions } from "fetch-mock";
+import _fetchMock from "fetch-mock";
+import type { FetchMock, RouteResponse } from "fetch-mock";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const fetchMock = _fetchMock as any as FetchMock;
 
 import { RestServerConnector } from "../src/index.js";
 import type {
@@ -76,11 +78,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test ok 200", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData() as RouteResponse
+			);
 		const serverConnector = new RestServerConnector(
 			"http://localhost:8080/api/",
 			requestFilters,
@@ -102,11 +106,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test ok base url", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData() as RouteResponse
+			);
 		const serverConnector = new RestServerConnector(
 			"http://localhost:8080/api",
 			requestFilters,
@@ -120,11 +126,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test additional response filter work correct", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData() as RouteResponse
+			);
 		const mockResponseFilters: [ResponseFilter] = [
 			{
 				canHandleResponse: (response: Response | undefined): boolean => {
@@ -166,11 +174,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test not authorised 401", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData401() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData401() as RouteResponse
+			);
 		const serverConnector = new RestServerConnector(
 			"http://localhost:8080/api",
 			requestFilters,
@@ -194,11 +204,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test not found 404", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData404() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData404() as RouteResponse
+			);
 		const serverConnector = new RestServerConnector(
 			"http://localhost:8080/api",
 			requestFilters,
@@ -222,11 +234,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test not unique 409", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData409() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData409() as RouteResponse
+			);
 		const serverConnector = new RestServerConnector(
 			"http://localhost:8080/api",
 			requestFilters,
@@ -250,11 +264,13 @@ describe("com.mgmtp.a12.connector.restServerConnector", () => {
 	});
 
 	it("test unhandled error 500", async () => {
-		fetchMock.restore().reset();
-		fetchMock.mock(
-			"http://localhost:8080/api/user/data",
-			TestDataHolder.testData500() as MockOptions
-		);
+		fetchMock
+			.hardReset()
+			.mockGlobal()
+			.route(
+				"http://localhost:8080/api/user/data",
+				TestDataHolder.testData500() as RouteResponse
+			);
 		const serverConnector = new RestServerConnector(
 			"http://localhost:8080/api",
 			requestFilters,

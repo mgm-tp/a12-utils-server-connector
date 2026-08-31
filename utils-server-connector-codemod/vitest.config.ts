@@ -29,21 +29,8 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import * as Assert from "node:assert";
+import { defineConfig } from "vitest/config";
 
-import { ConnectorLocator, RestServerConnector } from "../src/index.js";
-
-describe("com.mgmtp.a12.connector.restServerConnector", () => {
-	it("verify connector instance are the same", () => {
-		const serverConnector: RestServerConnector = new RestServerConnector(
-			"http://localhost:8080/api",
-			[]
-		);
-		ConnectorLocator.createInstance(serverConnector);
-		Assert.strictEqual(
-			ConnectorLocator.getInstance().getServerConnector(),
-			serverConnector,
-			"server connector is different instance"
-		);
-	});
+export default defineConfig({
+	test: { include: ["src/**/*.test.ts"] }
 });

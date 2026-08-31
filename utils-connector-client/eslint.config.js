@@ -35,7 +35,7 @@ import notice from "eslint-plugin-notice";
 
 import { strict as devtoolsStrict } from "@com.mgmtp.a12.devtools/eslint-config";
 
-const a12DualLicense = await readFile(`license/license-header.txt`, "utf-8");
+const a12DualLicense = await readFile(`license-template/license-header.txt`, "utf-8");
 
 /** @type { import("eslint").Linter.Config[] } */
 export default [

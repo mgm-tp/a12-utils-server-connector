@@ -7,10 +7,6 @@ plugins {
 	id "de.epitschke.gradle-file-versioning" version "1.3.0"
 }
 
-ext {
-	projectVersion = "${de.epitschke.gradle.fileversioning.FileVersioningPlugin.getVersionFromFile()}"
-}
-
 aggregateJavadoc {
 	failOnError = false
 	destinationDir = file("${project.layout.buildDirectory.get()}/docs/assets/javadoc")
@@ -47,10 +43,11 @@ task generateDocumentation {
 }
 
 catalog {
+	def catalogVersion = project.findProperty('projectVersion') ?: project.version
 	versionCatalog {
-		library('utils-rest-server-connector-spring-boot-autoconfigure', 'com.mgmtp.a12.utils', 'utils-rest-server-connector-spring-boot-autoconfigure').version("${project.projectVersion}")
-		library('utils-rest-server-connector', 'com.mgmtp.a12.utils', 'utils-rest-server-connector').version("${project.projectVersion}")
-		library('utils-server-connector-api', 'com.mgmtp.a12.utils', 'utils-server-connector-api').version("${project.projectVersion}")
+		library('utils-rest-server-connector-spring-boot-autoconfigure', 'com.mgmtp.a12.utils', 'utils-rest-server-connector-spring-boot-autoconfigure').version("${catalogVersion}")
+		library('utils-rest-server-connector', 'com.mgmtp.a12.utils', 'utils-rest-server-connector').version("${catalogVersion}")
+		library('utils-server-connector-api', 'com.mgmtp.a12.utils', 'utils-server-connector-api').version("${catalogVersion}")
 
 		bundle("utilsServerConnectorBundle", ["utils-server-connector-api", "utils-rest-server-connector", "utils-rest-server-connector-spring-boot-autoconfigure"])
 	}

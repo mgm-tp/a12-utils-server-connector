@@ -29,7 +29,6 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import "isomorphic-fetch";
 import * as Assert from "node:assert";
 
 import { FilterChain } from "../../src/internal/filter/FilterChain.js";

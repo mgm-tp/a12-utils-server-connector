@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
  * SPDX-License-Identifier: EUPL-1.2 OR LicenseRef-commercial
  *
@@ -29,21 +30,15 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import * as Assert from "node:assert";
+import { createCodemodCLI } from "@com.mgmtp.a12.devtools/codemod";
 
-import { ConnectorLocator, RestServerConnector } from "../src/index.js";
+import packageJson from "../package.json" with { type: "json" };
 
-describe("com.mgmtp.a12.connector.restServerConnector", () => {
-	it("verify connector instance are the same", () => {
-		const serverConnector: RestServerConnector = new RestServerConnector(
-			"http://localhost:8080/api",
-			[]
-		);
-		ConnectorLocator.createInstance(serverConnector);
-		Assert.strictEqual(
-			ConnectorLocator.getInstance().getServerConnector(),
-			serverConnector,
-			"server connector is different instance"
-		);
-	});
+import { topLevelImportsRecipe } from "./recipes/top-level-imports.js";
+
+createCodemodCLI({
+	name: "utils-connector-codemod",
+	version: packageJson.version,
+	description: "Codemod tooling for assisting migrations of A12 Utils Server Connector",
+	recipes: [topLevelImportsRecipe]
 });

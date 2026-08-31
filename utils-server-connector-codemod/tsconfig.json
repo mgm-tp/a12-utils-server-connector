@@ -1,0 +1,13 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"include": ["./src"],
+	"compilerOptions": {
+		"outDir": "./lib",
+		"rootDir": "./src",
+		"lib": ["DOM", "ES2025", "esnext.disposable"],
+		"sourceMap": false,
+		"declaration": false,
+		"declarationMap": false,
+		"tsBuildInfoFile": "target/tsbuildinfo"
+	}
+}

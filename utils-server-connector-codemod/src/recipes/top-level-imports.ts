@@ -29,21 +29,31 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
-import * as Assert from "node:assert";
+import { type Recipe, migrateImports, type ImportMigrationConfiguration } from "@com.mgmtp.a12.devtools/codemod";
 
-import { ConnectorLocator, RestServerConnector } from "../src/index.js";
+const packageName = "@com.mgmtp.a12.utils/utils-connector";
 
-describe("com.mgmtp.a12.connector.restServerConnector", () => {
-	it("verify connector instance are the same", () => {
-		const serverConnector: RestServerConnector = new RestServerConnector(
-			"http://localhost:8080/api",
-			[]
-		);
-		ConnectorLocator.createInstance(serverConnector);
-		Assert.strictEqual(
-			ConnectorLocator.getInstance().getServerConnector(),
-			serverConnector,
-			"server connector is different instance"
-		);
-	});
-});
+const migrationConfig: ImportMigrationConfiguration = {
+	pathMigrations: [
+		{
+			from: `${packageName}/lib/**/*.js`,
+			to: packageName
+		}
+	]
+};
+
+export const topLevelImportsRecipe: Recipe = {
+	metadata: {
+		id: "top-level-imports",
+		description: "Migrates imports from deep paths to top-level imports",
+		supportedVersions: "^8.1.0"
+	},
+
+	execute(project): void {
+		const sourceFiles = project.getSourceFiles();
+
+		for (const sourceFile of sourceFiles) {
+			migrateImports(sourceFile, migrationConfig);
+		}
+	}
+};
